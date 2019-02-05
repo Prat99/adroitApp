@@ -1,3 +1,22 @@
-<p>
-  coments works!
-</p>
+<div>
+    <table class="table table-hover " *ngIf='comments'>
+      <thead>
+        <tr>
+          <th>postId</th>
+          <th>Id</th>
+          <th>name</th>
+          <th>email</th>
+          <th>body</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor='let comment of comments'>
+          <td>{{comment.postId}}</td>
+          <td>{{comment.id}}</td>
+          <td>{{comment.name}}</td>
+          <td>{{comment.email}}</td>
+          <td>{{comment.body}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

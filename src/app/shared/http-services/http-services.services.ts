@@ -5,12 +5,11 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { baseApi } from '../config/config';
-import { Users } from '../../shared/models/models';
+import { Users, Posts, Comments } from '../../shared/models/models';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'my-auth-token'
+        'Content-Type': 'application/json'
     })
 };
 
@@ -25,6 +24,22 @@ export class HttpService {
     getUsers(): Observable<Users[]> {
         return this.http
             .get<Users[]>(`${this.baseApi.url}users`, httpOptions)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    getPosts(): Observable<Posts[]> {
+        return this.http
+            .get<Posts[]>(`${this.baseApi.url}posts`, httpOptions)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    getComments(): Observable<Comments[]> {
+        return this.http
+            .get<Comments[]>(`${this.baseApi.url}comments`, httpOptions)
             .pipe(
                 catchError(this.handleError)
             );

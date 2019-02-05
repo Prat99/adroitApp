@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full'
 },
 {
-  path: 'coments',
+  path: 'comments',
   component: ComentsComponent,
   pathMatch: 'full'
 },
